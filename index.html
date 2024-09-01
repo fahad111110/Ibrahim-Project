@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظرية فيثاغورس</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.5; /* تم تصغير الخط بمقدار 0.3 */
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ddd;
+            position: relative;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            font-size: 2.2em; /* تم تصغير الخط بمقدار 0.3 */
+            font-weight: 900;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            z-index: 2;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(18, 18, 18, 0.8);
+            border-radius: 8px;
+            position: relative;
+            z-index: 2;
+            margin-top: 60px;
+        }
+
+        .box {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .box h2 {
+            font-size: 2.2em; /* تم تصغير الخط بمقدار 0.3 */
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .theorem {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .example {
+            background: rgba(41, 41, 41, 0.8);
+            padding: 20px;
+            border-left: 4px solid #444;
+            margin-top: 20px;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px 0;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #0056b3;
+        }
+
+        .interactive, .quiz {
+            margin-top: 30px;
+        }
+
+        input, button {
+            padding: 15px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 250px;
+            display: block;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+            font-weight: 700;
+        }
+
+        button {
+            background: #28a745;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .quiz-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-form label {
+            margin-top: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5em; /* تم تصغير الخط بمقدار 0.3 */
+            color: #fff;
+        }
+
+        .quiz-form .options {
+            margin-top: 10px;
+            background: rgba(41, 41, 41, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+
+        .quiz-form .options label {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #555;
+            transition: background 0.3s;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .quiz-form .options label:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-form label:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-form .options input[type="radio"] {
+            margin-right: 15px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .history-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .history-list li {
+            margin: 15px 0;
+            background: #222;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .history-list li:hover {
+            background: #333;
+        }
+
+        .history-detail {
+            display: none;
+            background: #333;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .history-detail p {
+            margin: 0;
+        }
+
+        .theorem-image {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .theorem-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .error {
+            color: #ff0000;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .correct {
+            color: #00ff00;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .incorrect {
+            color: #ff0000;
+            font-size: 1.2em; /* تم تصغير الخط بمقدار 0.3 */
+        }
+
+        .large-text {
+            font-size: 1.8em; /* تم تصغير الخط بمقدار 0.3 */
+            font-weight: 900;
+        }
+
+        .math {
+            font-size: 1.8em; /* تم تصغير الخط بمقدار 0.3 */
+            font-weight: 900;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .math sup {
+            font-size: 0.5em;
+            position: relative;
+            top: -0.5em;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5em; /* زيادة حجم الخط لاسمك */
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-weight: 900;
+        }
+
+        footer p {
+            margin: 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>نظرية فيثاغورس</h1>
+    </header>
+    <nav>
+        <a href="#theory">النظرية</a>
+        <a href="#examples">أمثلة</a>
+        <a href="#interactive">تفاعل</a>
+        <a href="#history">التاريخ</a>
+        <a href="#quiz">اختبار</a>
+    </nav>
+
+    <div class="container">
+        <section id="theory" class="box">
+            <h2>النظرية</h2>
+            <div class="theorem">
+                <p>تعتبر نظرية فيثاغورس من النظريات الأساسية في الرياضيات. تنص على أن:</p>
+                <p class="math">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></p>
+                <p>حيث a و b هما طولي الضلعين القائمين في مثلث قائم الزاوية، و c هو طول الوتر.</p>
+            </div>
+            <div class="theorem-image">
+                <img src="https://modo3.com/thumbs/fit630x300/100416/1589848342/%D9%82%D8%A7%D9%86%D9%88%D9%86_%D9%86%D8%B8%D8%B1%D9%8A%D8%A9_%D9%81%D9%8A%D8%AB%D8%A7%D8%BA%D9%88%D8%B1%D8%B3.jpg" alt="نظرية فيثاغورس">
+            </div>
+        </section>
+
+        <section id="examples" class="box">
+            <h2>أمثلة</h2>
+            <div class="example">
+                <p><strong>مثال 1:</strong> إذا كان طول الضلعين القائمين في مثلث قائم الزاوية هما 3 و4، فإن طول الوتر يكون <span class="math">√(3<sup>2</sup> + 4<sup>2</sup>) = √25 = 5</span>.</p>
+            </div>
+            <div class="example">
+                <p><strong>مثال 2:</strong> إذا كان طول أحد الأضلاع القائمين في مثلث قائم الزاوية هو 5 وطول الوتر هو 13، فإن طول الضلع الآخر يكون <span class="math">√(13<sup>2</sup> - 5<sup>2</sup>) = √144 = 12</span>.</p>
+            </div>
+        </section>
+
+        <section id="interactive" class="box interactive">
+            <h2>تفاعل</h2>
+            <p>ادخل قيم الطولين القائمين في المثلث للحصول على طول الوتر:</p>
+            <input type="number" id="sideA" placeholder="طول الضلع A" />
+            <input type="number" id="sideB" placeholder="طول الضلع B" />
+            <button onclick="calculateHypotenuse()">احسب طول الوتر</button>
+            <p id="result"></p>
+        </section>
+
+        <section id="history" class="box">
+            <h2>تاريخ نظرية فيثاغورس</h2>
+            <ul class="history-list">
+                <li onclick="showDetail('ancient')">النظرية في العصور القديمة</li>
+                <li onclick="showDetail('greek')">النظرية في اليونان القديمة</li>
+                <li onclick="showDetail('modern')">النظرية في العصر الحديث</li>
+            </ul>
+            <div id="ancient" class="history-detail">
+                <h3>النظرية في العصور القديمة</h3>
+                <p>كان هنالك استخدامات مبكرة لفكرة نظرية فيثاغورس في العديد من الثقافات القديمة مثل مصر وبلاد ما بين النهرين. استخدم المصريون القدماء قواعد قائمة على المبادئ المماثلة في بناء هياكلهم.</p>
+            </div>
+            <div id="greek" class="history-detail">
+                <h3>النظرية في اليونان القديمة</h3>
+                <p>تم تسجيل نظرية فيثاغورس بشكل رسمي لأول مرة من قبل الفيلسوف اليوناني فيثاغورس في القرن السادس قبل الميلاد. قام فيثاغورس بتطوير النظرية واستخدمها في مختلف التطبيقات الرياضية.</p>
+            </div>
+            <div id="modern" class="history-detail">
+                <h3>النظرية في العصر الحديث</h3>
+                <p>في العصر الحديث، أصبحت نظرية فيثاغورس من الأسس الأساسية في علم الرياضيات والهندسة. تم استخدامها في العديد من التطبيقات العملية، بما في ذلك التصميم الهندسي والفيزياء.</p>
+            </div>
+        </section>
+
+        <section id="quiz" class="box">
+            <h2>اختبار</h2>
+            <form class="quiz-form" id="quizForm">
+                <label for="q1">1. في مثلث قائم الزاوية، إذا كانت القيم A و B هما 6 و8، فما هو طول الوتر؟</label>
+                <div class="options">
+                    <label class="option1">
+                        <input type="radio" name="q1" value="10"> 10
+                    </label>
+                    <label class="option2">
+                        <input type="radio" name="q1" value="12"> 12
+                    </label>
+                    <label class="option3">
+                        <input type="radio" name="q1" value="14"> 14
+                    </label>
+                </div>
+
+                <label for="q2">2. ما هي الصيغة الرياضية لنظرية فيثاغورس؟</label>
+                <div class="options">
+                    <label class="option1">
+                        <input type="radio" name="q2" value="a2 + b2 = c2"> a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+                    </label>
+                    <label class="option2">
+                        <input type="radio" name="q2" value="a2 - b2 = c2"> a<sup>2</sup> - b<sup>2</sup> = c<sup>2</sup>
+                    </label>
+                    <label class="option3">
+                        <input type="radio" name="q2" value="a + b = c"> a + b = c
+                    </label>
+                </div>
+
+                <label for="q3">3. إذا كان طول الضلعين القائمين 5 و12، فما هو طول الوتر؟</label>
+                <div class="options">
+                    <label class="option1">
+                        <input type="radio" name="q3" value="13"> 13
+                    </label>
+                    <label class="option2">
+                        <input type="radio" name="q3" value="15"> 15
+                    </label>
+                    <label class="option3">
+                        <input type="radio" name="q3" value="17"> 17
+                    </label>
+                </div>
+
+                <label for="q4">4. إذا كان الوتر طوله 10، فما هو طول أحد الأضلاع القائمين إذا كان الآخر طوله 6؟</label>
+                <div class="options">
+                    <label class="option1">
+                        <input type="radio" name="q4" value="8"> 8
+                    </label>
+                    <label class="option2">
+                        <input type="radio" name="q4" value="12"> 12
+                    </label>
+                    <label class="option3">
+                        <input type="radio" name="q4" value="14"> 14
+                    </label>
+                </div>
+
+                <label for="q5">5. في مثلث قائم الزاوية، إذا كان طول الوتر هو 25 وطول أحد الأضلاع القائمين هو 7، فما هو طول الضلع الآخر؟</label>
+                <div class="options">
+                    <label class="option1">
+                        <input type="radio" name="q5" value="24"> 24
+                    </label>
+                    <label class="option2">
+                        <input type="radio" name="q5" value="20"> 20
+                    </label>
+                    <label class="option3">
+                        <input type="radio" name="q5" value="22"> 22
+                    </label>
+                </div>
+
+                <button type="button" onclick="checkAnswers()">تقديم</button>
+            </form>
+            <div id="results"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>عمل الطالب Ibrahim Saleh 203</p>
+    </footer>
+
+    <script>
+        function calculateHypotenuse() {
+            var a = parseFloat(document.getElementById('sideA').value);
+            var b = parseFloat(document.getElementById('sideB').value);
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById('result').textContent = 'يرجى إدخال قيم صحيحة للطولين.';
+                return;
+            }
+            var c = Math.sqrt(a * a + b * b).toFixed(2);
+            document.getElementById('result').textContent = 'طول الوتر هو: ' + c;
+        }
+
+        function showDetail(id) {
+            var details = document.querySelectorAll('.history-detail');
+            details.forEach(function(detail) {
+                detail.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function checkAnswers() {
+            var correctAnswers = {
+                q1: "10",
+                q2: "a2 + b2 = c2",
+                q3: "13",
+                q4: "8",
+                q5: "24"
+            };
+            var form = document.getElementById('quizForm');
+            var results = document.getElementById('results');
+            results.innerHTML = '';
+
+            Object.keys(correctAnswers).forEach(function(question) {
+                var selected = form.querySelector('input[name="' + question + '"]:checked');
+                if (selected) {
+                    var answer = selected.value;
+                    var result = document.createElement('p');
+                    if (answer === correctAnswers[question]) {
+                        result.className = 'correct';
+                        result.textContent = 'السؤال ' + question.charAt(1) + ': إجابتك صحيحة!';
+                    } else {
+                        result.className = 'incorrect';
+                        result.textContent = 'السؤال ' + question.charAt(1) + ': الإجابة الصحيحة هي ' + correctAnswers[question] + '.';
+                    }
+                    results.appendChild(result);
+                } else {
+                    var result = document.createElement('p');
+                    result.className = 'error';
+                    result.textContent = 'السؤال ' + question.charAt(1) + ': لم تقم باختيار إجابة.';
+                    results.appendChild(result);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
